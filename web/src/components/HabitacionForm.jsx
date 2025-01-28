@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Select from "./Select";
 import { useEffect } from "react";
+import { environment } from "../configuration/environment";
 
 export default function HabitacionForm({ hotel, onSubmit }) {
 
@@ -15,7 +16,7 @@ export default function HabitacionForm({ hotel, onSubmit }) {
   const [acomodaciones, setAcomodaciones] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/roomTypes')
+    fetch(environment.URL_API + '/api/roomTypes')
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)
@@ -23,7 +24,7 @@ export default function HabitacionForm({ hotel, onSubmit }) {
       })
       .catch(err => console.log(err))
 
-    fetch('http://localhost:8000/api/accomodations')
+    fetch(environment.URL_API + '/api/accomodations')
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)
@@ -54,7 +55,7 @@ export default function HabitacionForm({ hotel, onSubmit }) {
       redirect: "follow"
     };
 
-    fetch("http://localhost:8000/api/rooms", requestOptions)
+    fetch(environment.URL_API + "/api/rooms", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result)

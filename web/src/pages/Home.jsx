@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import HotelForm from "../components/HotelForm";
 import HotelCard from "../components/HotelCard";
 import Main from "../layouts/Main";
+import { environment } from '../configuration/environment'
 
 export default function Home() {
   const [hotels, setHotels] = useState([])
@@ -11,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     setHotels([])
-    fetch('http://localhost:8000/api/hotels')
+    fetch(environment.URL_API + '/api/hotels')
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)

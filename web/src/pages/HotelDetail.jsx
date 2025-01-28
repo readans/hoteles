@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "wouter"
 import HabitacionForm from "../components/HabitacionForm";
+import { environment } from "../configuration/environment";
 
 const HabitacionCard = ({ habitacion, onDelete }) => {
 
@@ -11,7 +12,7 @@ const HabitacionCard = ({ habitacion, onDelete }) => {
       method: "DELETE",
     };
 
-    fetch("http://localhost:8000/api/rooms/" + habitacion.id, requestOptions)
+    fetch(environment.URL_API + "/api/rooms/" + habitacion.id, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result)
@@ -66,7 +67,7 @@ export default function HotelDetail() {
   const [habitaciones, setHabitaciones] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/hotels/' + id)
+    fetch(environment.URL_API + '/api/hotels/' + id)
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)

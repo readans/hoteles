@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { environment } from "../configuration/environment";
 
 export default function HotelForm({ onSubmit }) {
 
@@ -32,7 +33,7 @@ export default function HotelForm({ onSubmit }) {
       redirect: "follow"
     };
 
-    fetch("http://localhost:8000/api/hotels", requestOptions)
+    fetch(environment.URL_API + "/api/hotels", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result)
