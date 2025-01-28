@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "wouter";
+import { environment } from "../configuration/environment";
 
 export default function HotelCard({ hotel, onDelete }) {
 
@@ -9,7 +10,7 @@ export default function HotelCard({ hotel, onDelete }) {
       method: "DELETE",
     };
 
-    fetch("http://localhost:8000/api/hotels/" + hotel.id, requestOptions)
+    fetch(environment.URL_API + "/api/hotels/" + hotel.id, requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result)
